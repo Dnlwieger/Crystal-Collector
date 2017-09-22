@@ -8,11 +8,8 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous" type="text/javascript">
-
-
-
-</script>
+  crossorigin="anonymous" type="text/javascript"></script>
+  	
 <div class="randomNumber"><p>Random Number</p></div>
 <div class="crystalOne"><button>Crystal 1</button></div><br>
 <div class="crystalTwo"><button>Crystal 2</button></div><br>
@@ -22,5 +19,69 @@
 <div class="wins"><p>Wins:</p></div>
 <div class="losses"><p>Losses:</p></div>
 
+
+<script type="text/javascript">
+// ready the vars
+var number = "";
+var crystal1 = "";
+var crystal2 = "";
+var crystal3 = "";
+var crystal4 = "";
+var total = 0;
+var wins = 0;
+	
+// parse the "total" var to change the empty string to a numeral (7+1=8 instead of =71)
+total = parseInt(0);
+
+// <!-- create a random number 19-120 and apply it to randomNumber -->
+for (var i=0; i<1; i++) {
+	var number = Math.floor(Math.random() *((120-19) + 1) +19);
+	$(".randomNumber").append("<h1>" + number + "</h1>");
+}
+
+
+
+// generate a random number betweem 1 & 12 and apply that value to each button when the page loads
+var crystal1 = Math.floor(Math.random() * (11 + 1) +1);
+console.log(crystal1);
+var crystal2 = Math.floor(Math.random() * (11 + 1) +1);
+console.log(crystal2);
+var crystal3 = Math.floor(Math.random() * (11 + 1) +1);
+console.log(crystal3);
+var crystal4 = Math.floor(Math.random() * (11 + 1) +1);
+console.log(crystal4);
+
+// Each time you click a button, add that value to total and print to screen
+$(".crystalOne").on("click", function() {
+	total = crystal1 + total;
+	$(".total").text(total)
+})
+
+$(".crystalTwo").on("click", function() {
+	total = crystal2 + total;
+	$(".total").text(total)
+})
+
+$(".crystalThree").on("click", function() {
+	total = crystal3 + total;
+	$(".total").text(total)	
+})
+
+$(".crystalFour").on("click", function() {
+	total = crystal4 + total;
+	$(".total").text(total)	
+})
+
+//track wins
+var checkWins = function() {
+	if (total === number) {
+		wins++;
+		flag = false;
+		$(".wins").text(wins);
+		console.log(wins);
+	}
+}
+checkWins();
+</script>
 </body>
 </html>
